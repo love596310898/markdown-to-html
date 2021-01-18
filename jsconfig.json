@@ -1,0 +1,17 @@
+// 此文件时vsCode官方配置，可查阅vsCode官方文档进行配置
+// 此文件 是配合vsCode 的 path autoComplate 插件使用
+// path autoComPlate 插件在vue使用别名时提供路径提示功能
+// 在使用鼠标ctrl + click 点击路径时，需要借助此文件配置才能实现跳转到路径指向的文件
+{ 
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "target": "ES6",
+        "module": "es6",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": ["src/*"],
+    "exclude": ["node_modules/*", "dist/**"]
+}
