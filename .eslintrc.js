@@ -12,7 +12,9 @@ module.exports = {
     parserOptions: {
         "parser": "babel-eslint"
     },
+    ignorePatterns: ["**/dist/**/*.js", "**/.vscode/*.js"],
     rules: {
         "max-len": ["error", 200],
+        "linebreak-style": "off"
     }
 }
