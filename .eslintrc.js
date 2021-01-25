@@ -15,6 +15,7 @@ module.exports = {
     ignorePatterns: ["**/dist/**/*.js", "**/.vscode/*.js"],
     rules: {
         "max-len": ["error", 200],
-        "linebreak-style": "off"
+        "linebreak-style": "off",
+        "no-console": "off"
     }
 }
