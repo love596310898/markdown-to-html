@@ -1,0 +1,41 @@
+// layout
+.mk-fl-r {
+    display: flex;
+}
+
+.mk-fl-c {
+    display: flex;
+    flex-direction: column;
+}
+
+.mk-jc-sb {
+    justify-content: space-between;
+}
+
+.mk-jc-sa {
+    justify-content: space-around;
+}
+
+.mk-jc-c {
+    justify-content: center;
+}
+
+.mk-jc-fs {
+    justify-content: flex-start;
+}
+
+.mk-jc-fe {
+    justify-content: flex-end;
+}
+
+.mk-ai-fs {
+    align-items: flex-start;
+}
+
+.mk-ai-c {
+    align-items: center;
+}
+
+.mk-ai-fe {
+    align-items: flex-end;
+}

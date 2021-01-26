@@ -1,14 +1,7 @@
-export const mainRouter = [
+export default [
   {
-    name: '/home',
-    path: '/home',
-
-  },
-];
-
-export const otherRouter = [
-  {
-    name: '/404',
-    path: '/404',
+    name: 'home',
+    path: '',
+    component: () => import('@/views/markdown/index.vue'),
   },
 ];
