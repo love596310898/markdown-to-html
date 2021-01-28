@@ -1,6 +1,6 @@
 <template>
   <div class="side-left-wrap">
-    <el-menu class="" :default-active="activeMenu">
+    <el-menu class="mk-pt-20" :default-active="activeMenu">
       <MenuItem v-for="menu in menuList" :key="menu.id" :menuItem="menu"></MenuItem>
     </el-menu>
   </div>

@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-wrap{
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   position: relative;
   padding-top: 80px;

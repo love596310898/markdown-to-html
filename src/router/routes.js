@@ -1,7 +1,7 @@
 export default [
   {
-    name: 'home',
+    name: 'main-default',
     path: '',
-    component: () => import('@/views/markdown/index.vue'),
+    component: () => import('@/views/main-default/index.vue'),
   },
 ];
