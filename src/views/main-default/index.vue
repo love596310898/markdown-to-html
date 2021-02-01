@@ -1,7 +1,6 @@
 <template>
   <div class="markdown-wrap">
     <Install></Install>
-    <Test @test="test"></Test>
   </div>
 </template>
 

@@ -5,7 +5,7 @@ import Router from 'vue-router';
 import mainRouter from './main';
 
 // 开发环境不使用懒加载, 懒加载页面太多会造成webpack热更新慢, 而生产环境使用懒加载
-// const myimport = require(`./import-${process.env.NODE_ENV}`).default;
+const myimport = require(`./import-${process.env.NODE_ENV}`).default;
 
 Vue.use(Router);
 
@@ -15,13 +15,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('@/views/main/index.vue'),
+      component: myimport('main/index.vue'),
       children: mainRouter,
     },
     {
       name: '404',
       path: '*',
-      component: () => import('@/views/404.vue'),
+      component: myimport('404.vue'),
     },
   ],
 });
