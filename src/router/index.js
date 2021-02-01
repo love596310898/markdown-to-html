@@ -15,6 +15,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/main/FontFamily',
+    },
+    {
+      path: '/main',
       component: myimport('main/index.vue'),
       children: mainRouter,
     },

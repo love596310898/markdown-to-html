@@ -8,9 +8,16 @@
 
 <script>
 import MenuItem from '@/components/menu-item/index.vue';
+import router from '@/router';
 
 export default {
   components: { MenuItem },
+  props: {
+    menuList: {
+      type: Array,
+      required: true,
+    },
+  },
   provide() {
     return {
       select: this.select,
@@ -18,30 +25,13 @@ export default {
   },
   data() {
     return {
-      activeMenu: '1',
-      menuList: [
-        {
-          id: '1',
-          name: '测试菜单1',
-        },
-        {
-          id: '2',
-          name: '测试菜单2',
-        },
-        {
-          id: '3',
-          name: '测试菜单3',
-        },
-        {
-          id: '4',
-          name: '测试菜单4',
-        },
-      ],
+      activeMenu: this.$route.params.docName,
+
     };
   },
   methods: {
     select(item) {
-      console.log(item.id);
+      router.push({ path: `/main/${item.id}` });
     },
   },
 };

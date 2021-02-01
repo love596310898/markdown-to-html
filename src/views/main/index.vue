@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrap">
     <Header class="header"></Header>
-    <SideLeft class="side"></SideLeft>
+    <SideLeft :menuList="menuList" class="side"></SideLeft>
     <div class="container">
       <transition name="fade" type="out-in">
         <router-view></router-view>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import doc from '@/views/doc-markdown/index';
 import Header from './header.vue';
 import SideLeft from './side-left.vue';
 
@@ -18,9 +19,12 @@ export default {
   name: 'Main',
   components: { Header, SideLeft },
   data() {
-    return {
-
-    };
+    return {};
+  },
+  computed: {
+    menuList() {
+      return Object.keys(doc).map((key) => ({ id: key, name: key }));
+    },
   },
 };
 </script>

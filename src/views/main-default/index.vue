@@ -1,21 +1,21 @@
 <template>
   <div class="markdown-wrap">
-    <Install></Install>
+    <components :is="docName"></components>
   </div>
 </template>
 
 <script>
-import Install from '@/documents/README.md';
+
+import components from '@/views/doc-markdown/index';
 
 export default {
   name: 'Markdown',
-  components: { Install },
-  data() {
-    return {
-
-    };
-  },
-  methods: {
+  components,
+  props: {
+    docName: {
+      type: String,
+      riquered: true,
+    },
   },
 };
 </script>
@@ -25,6 +25,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding-top: 40px;
 }
 </style>
