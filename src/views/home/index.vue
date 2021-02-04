@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import doc from '@/views/doc-markdown/index';
 import Header from '@/components/header/index.vue';
 import Menu from '@/components/menu/index.vue';
 
@@ -23,7 +22,7 @@ export default {
   },
   computed: {
     menuList() {
-      return Object.keys(doc).map((key) => ({ id: `/main/${key}`, name: key }));
+      return [{ name: 'vue-corper', id: 'vue-corper' }];
     },
   },
 };

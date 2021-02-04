@@ -23,22 +23,30 @@ export default {
       select: this.select,
     };
   },
-  data() {
-    return {
-      activeMenu: this.$route.params.docName,
-
-    };
+  computed: {
+    // 初始化菜单选中状态
+    activeMenu() {
+      const getDefault = (firstMenu) => {
+        if (!firstMenu) return '';
+        const { childen } = firstMenu;
+        if (childen && childen.length > 0) {
+          return getDefault(childen[0]);
+        }
+        return firstMenu.id;
+      };
+      return getDefault(this.menuList[0]);
+    },
   },
   methods: {
     select(item) {
-      router.push({ path: `/main/${item.id}` });
+      router.push({ path: item.id });
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.side-left-wrap::v-deep{
+<style lang="scss">
+.side-left-wrap{
   .el-menu{
     height: 100%;
   }

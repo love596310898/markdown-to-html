@@ -14,7 +14,7 @@ export default {
   props: {
     docName: {
       type: String,
-      riquered: true,
+      required: true,
     },
   },
 };
