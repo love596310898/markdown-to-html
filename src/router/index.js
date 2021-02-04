@@ -32,4 +32,14 @@ const router = new Router({
   ],
 });
 
+const originPush = Router.prototype.push;
+
+Router.prototype.push = async function push(option) {
+  try {
+    const res = await originPush.call(this, option);
+  } catch (err) {
+    console.log(`please don't location samed path of [${option.path}]`);
+  }
+};
+
 export default router;
