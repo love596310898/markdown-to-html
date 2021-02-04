@@ -13,6 +13,7 @@
 <script>
 import Header from '@/components/header/index.vue';
 import Menu from '@/components/menu/index.vue';
+import menuList from '@/router/home';
 
 export default {
   name: 'Main',
@@ -22,7 +23,10 @@ export default {
   },
   computed: {
     menuList() {
-      return [{ name: 'vue-corper', id: 'vue-corper' }];
+      return menuList.map((item) => ({
+        name: item.meta.name,
+        id: item.path || '/',
+      }));
     },
   },
 };

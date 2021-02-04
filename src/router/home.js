@@ -3,7 +3,19 @@
 const myimport = require(`./import-${process.env.NODE_ENV}`).default;
 export default [
   {
+    name: 'vue-corper',
     path: '',
     component: myimport('vue-corper/index.vue'),
+    meta: {
+      name: '头像裁剪',
+    },
+  },
+  {
+    name: 'steps',
+    path: '/home/steps',
+    component: myimport('steps/index.vue'),
+    meta: {
+      name: '步骤条',
+    },
   },
 ];
