@@ -18,4 +18,12 @@ export default [
       name: '步骤条',
     },
   },
+  {
+    name: 'progress',
+    path: '/home/progress',
+    component: myimport('progress/index.vue'),
+    meta: {
+      name: '环形进度条',
+    },
+  },
 ];
