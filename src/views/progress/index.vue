@@ -51,7 +51,6 @@ export default {
       -webkit-box-pack: center;
       -webkit-box-align: center;
       margin: 50px auto;
-      background: fff;
       border-radius: 50%;
       box-shadow: 0 0 0 10px red inset;
     }
