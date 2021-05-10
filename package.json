@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "echarts": "^5.0.1",
+    "echarts": "^5.1.1",
     "element-ui": "^2.15.0",
+    "lodash": "^4.17.21",
+    "resize-observer-polyfill": "^1.5.1",
     "sass-loader": "^10.1.1",
     "vue": "^2.6.11",
     "vue-cropper": "^0.5.6",

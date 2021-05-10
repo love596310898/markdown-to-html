@@ -26,4 +26,12 @@ export default [
       name: '环形进度条',
     },
   },
+  {
+    name: 'map',
+    path: '/home/map',
+    component: myimport('map/index.vue'),
+    meta: {
+      name: '地图',
+    },
+  },
 ];

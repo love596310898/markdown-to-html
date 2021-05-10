@@ -50,11 +50,5 @@ export default {
     top: 80px;
     left: 0;
   }
-  .container{
-    width: 700px;
-    margin:0 auto;
-    position: relative;
-    padding-right: 200px;
-  }
 }
 </style>

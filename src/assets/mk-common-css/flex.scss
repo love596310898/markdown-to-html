@@ -8,6 +8,10 @@
     flex-direction: column;
 }
 
+.mk-fl-1{
+    flex: 1;
+}
+
 .mk-jc-sb {
     justify-content: space-between;
 }
@@ -28,12 +32,11 @@
     justify-content: flex-end;
 }
 
-.mk-ai-fs {
-    align-items: flex-start;
-}
-
 .mk-ai-c {
     align-items: center;
+}
+.mk-ai-fs {
+    align-items: flex-start;
 }
 
 .mk-ai-fe {
