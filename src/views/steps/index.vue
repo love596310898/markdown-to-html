@@ -1,23 +1,33 @@
 <template>
-  <div class="steps-wrap">
-    <div v-for="(i, index) in stepList" :key="i" class="step" :class="{ active: index === status }">
-      {{ i }}
+  <div>
+    <div class="steps-wrap">
+      <div v-for="(i, index) in $data.$stepList" :key="i" class="step" :class="{ active: index === status }">
+        {{ i }}
+      </div>
+    </div>
+    <div>
+      <TimeControl></TimeControl>
     </div>
   </div>
 </template>
 
 <script>
-const stepList = ['1. 选票页面', '2. 填写参会人信息', '3. 报名成功'];
+import TimeControl from '@/components/time-conctrol/index.vue';
+
 export default {
+
   props: {
     status: {
       type: Number,
       default: 1,
     },
   },
+  components: {
+    TimeControl,
+  },
   data() {
     return {
-      stepList,
+      $stepList: ['1. 选票页面', '2. 填写参会人信息', '3. 报名成功'],
     };
   },
 };

@@ -1,6 +1,7 @@
 <template>
   <div class="map-wrap">
     <Echarts ref="map"></Echarts>
+    <div>{{test}}</div>
   </div>
 </template>
 
@@ -9,7 +10,18 @@ import Echarts from '@/components/echarts/index.vue';
 
 export default {
   components: { Echarts },
+  data() {
+    return {
+      msg: 'test',
+    };
+  },
+  computed: {
+    test() {
+      return `${this.msg}1111`;
+    },
+  },
   mounted() {
+    console.log(this);
     this.$nextTick(() => {
       this.$refs.map.setOption({
         xAxis: {

@@ -9,7 +9,9 @@
 </template>
 
 <script>
+
 export default {
+
   data() {
     return {
       persent: 10,
