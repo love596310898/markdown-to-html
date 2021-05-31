@@ -11,7 +11,6 @@
 <script>
 
 export default {
-
   data() {
     return {
       persent: 10,
@@ -44,8 +43,9 @@ export default {
 
 <style lang="scss">
 .progress-wrap {
-  width: 100%;
+  width: 800px;
   height: 600px;
+  margin: 0 auto;
     .demo1-bg1 {
       width: 100px;
       height: 100px;

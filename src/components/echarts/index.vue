@@ -29,22 +29,20 @@ export default {
       this.eventList = ['click', 'dblclick', 'mousedown', 'mousemove', 'mouseup', 'mouseover', 'mouseout', 'globalout', 'contextmenu'];
     },
     initChart() {
-      this.$nextTick(() => {
-        const el = this.$refs.echarts;
-        if (!el) return;
-        this.echarts = echarts.init(el, this.theme);
-        this.eventList.forEach((type) => {
-          this.echarts.on(type, (e) => {
-            this.$emit(type, e);
-          });
+      const el = this.$refs.echarts;
+      if (!el) return;
+      this.echarts = echarts.init(el, this.theme);
+      this.eventList.forEach((type) => {
+        this.echarts.on(type, (e) => {
+          this.$emit(type, e);
         });
-        addResizeListener(el, debounce((ev) => {
-          this.echarts.resize();
-          this.$emit('resize', ev);
-        }, 100));
-        this.$once('hook:beforeDestory', () => {
-          this.el = null;
-        });
+      });
+      addResizeListener(el, debounce((ev) => {
+        this.echarts.resize();
+        this.$emit('resize', ev);
+      }, 100));
+      this.$once('hook:beforeDestory', () => {
+        this.el = null;
       });
     },
     setOption(option) {

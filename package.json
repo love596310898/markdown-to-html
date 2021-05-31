@@ -9,6 +9,7 @@
     "build:shell": "bash ./config/build.sh"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "echarts": "^5.1.1",
     "element-ui": "^2.15.0",
