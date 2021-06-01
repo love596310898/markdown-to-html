@@ -1,12 +1,12 @@
 <template>
     <div class="echarts-panel">
-        <div ref="echarts" class="echarts-main"></div>
+        <div ref="el" class="echarts-main"></div>
     </div>
 </template>
 <script>
 import * as echarts from 'echarts';
 import { debounce } from 'lodash';
-import { addResizeListener } from '@/utils/resize-event';
+import { addResizeListener, removeResizeListener } from '@/utils/resize-event';
 
 export default {
   name: 'ECharts',
@@ -17,38 +17,38 @@ export default {
     },
   },
   data() {
-    this.initPorp();
-    return {};
+    return {
+      $echarts: null,
+      $eventList: ['click', 'dblclick', 'mousedown', 'mousemove', 'mouseup', 'mouseover', 'mouseout', 'globalout', 'contextmenu'],
+    };
   },
   mounted() {
     this.initChart();
   },
   methods: {
-    initPorp() {
-      this.echarts = null;
-      this.eventList = ['click', 'dblclick', 'mousedown', 'mousemove', 'mouseup', 'mouseover', 'mouseout', 'globalout', 'contextmenu'];
-    },
     initChart() {
-      const el = this.$refs.echarts;
-      if (!el) return;
-      this.echarts = echarts.init(el, this.theme);
-      this.eventList.forEach((type) => {
-        this.echarts.on(type, (e) => {
+      if (!this.$refs.el) return;
+      this.$data.$echarts = echarts.init(this.$refs.el, this.theme);
+      this.$data.$eventList.forEach((type) => {
+        this.$data.$echarts.on(type, (e) => {
           this.$emit(type, e);
         });
       });
-      addResizeListener(el, debounce((ev) => {
-        this.echarts.resize();
+      const resizeHandler = debounce((ev) => {
+        this.$data.$echarts.resize();
         this.$emit('resize', ev);
-      }, 100));
-      this.$once('hook:beforeDestory', () => {
-        this.el = null;
+      }, 100);
+      addResizeListener(this.$refs.el, resizeHandler);
+      this.$once('hook:beforeDestroy', () => {
+        removeResizeListener(this.$refs.el, resizeHandler);
+        this.$refs.el = null;
+        this.$data.$echarts = null;
       });
     },
     setOption(option) {
-      if (!this.echarts) return;
-      this.echarts.clear();
-      this.echarts.setOption(option, true);
+      if (!this.$data.$echarts) return;
+      this.$data.$echarts.clear();
+      this.$data.$echarts.setOption(option, true);
     },
     setTheme() {
       this.initChart();

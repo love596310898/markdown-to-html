@@ -5,8 +5,8 @@
         {{ i }}
       </div>
     </div>
-    <div>
-      <TimeControl></TimeControl>
+    <div class="time-control mk-fl-r mk-ai-c mk-jc-c">
+      <TimeControl v-model="dateRange" :rangeOption="$data.$rangeOption"></TimeControl>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
 import TimeControl from '@/components/time-conctrol/index.vue';
 
 export default {
-
+  name: 'Steps',
   props: {
     status: {
       type: Number,
@@ -28,13 +28,30 @@ export default {
   data() {
     return {
       $stepList: ['1. 选票页面', '2. 填写参会人信息', '3. 报名成功'],
+      $rangeOption: [{
+        label: '本周',
+        value: 'week',
+        default: true,
+      },
+      {
+        label: '2天',
+        value: '2',
+      }],
+      dateRange: [new Date('2021-04-30'), new Date()],
     };
   },
 };
 </script>
 
 <style lang="scss">
+.time-control {
+  width: 80%;
+  margin: 0 auto;
+  height: 100px;
+}
 .steps-wrap {
+  width: 80%;
+  margin: 80px auto;
   display: flex;
   background-color: rgba(244, 244, 244, 1);
   .step {

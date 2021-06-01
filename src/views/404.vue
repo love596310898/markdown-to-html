@@ -17,7 +17,7 @@ export default {
 .not-found{
   height: 100vh;
   .text-tip{
-    color: $primary;
+    color: var(primary-danger);
   }
 }
 </style>
