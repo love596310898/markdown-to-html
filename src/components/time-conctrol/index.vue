@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { formatTime, getTimeRangeByUnit } from '@/utils/time';
+import { formatTime, getTimeRange } from '@/utils/time';
 import * as typeAssert from '@/utils/isType';
 
 export default {
@@ -97,7 +97,7 @@ export default {
         let startDate;
         let endDate;
         if (Number.isNaN(dayCount)) {
-          let dateRange = getTimeRangeByUnit(this.activeRadio);
+          let dateRange = getTimeRange(this.activeRadio);
           const opt = this.rangeOption.find((i) => i.value === this.activeRadio);
           if (!dateRange && opt && opt.method && typeAssert.isFunction(opt.method)) {
             dateRange = opt.method();

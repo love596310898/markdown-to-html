@@ -34,8 +34,8 @@ export default {
         default: true,
       },
       {
-        label: '2天',
-        value: '2',
+        label: '3天',
+        value: '3',
       }],
       dateRange: [new Date('2021-04-30'), new Date()],
     };

@@ -42,11 +42,10 @@ export function formatTime(date, fmt = 'yyyy-MM-dd hh:mm:ss') {
 }
 
 /**
- * 通过最近时间和单位（最近一周，最近一月等），获取时间段（时间戳数组）
- * @param {*} timeValue 最近时间
- * @param {*} timeUnit  时间单位
+ * 根据时间周期单位获取时间范围（Unit: String => Array: [Date, Date]）
+ * @param {*} Unit 周期单位
  */
-export function getTimeRangeByUnit(Unit) {
+export function getTimeRange(Unit) {
   const now = new Date();
   const y = now.getFullYear();
   const M = (now.getMonth() + 1);
