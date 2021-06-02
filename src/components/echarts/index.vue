@@ -1,7 +1,7 @@
 <template>
-    <div class="echarts-panel">
-        <div ref="el" class="echarts-main"></div>
-    </div>
+  <div ref="echarts-panel" class="echarts-panel">
+    <div ref="el" class="echarts-main"></div>
+  </div>
 </template>
 <script>
 import * as echarts from 'echarts';
@@ -19,7 +19,17 @@ export default {
   data() {
     return {
       $echarts: null,
-      $eventList: ['click', 'dblclick', 'mousedown', 'mousemove', 'mouseup', 'mouseover', 'mouseout', 'globalout', 'contextmenu'],
+      $eventList: [
+        'click',
+        'dblclick',
+        'mousedown',
+        'mousemove',
+        'mouseup',
+        'mouseover',
+        'mouseout',
+        'globalout',
+        'contextmenu',
+      ],
     };
   },
   mounted() {
@@ -37,12 +47,11 @@ export default {
       const resizeHandler = debounce((ev) => {
         this.$data.$echarts.resize();
         this.$emit('resize', ev);
-      }, 100);
-      addResizeListener(this.$refs.el, resizeHandler);
+        console.log(111);
+      }, 500);
+      addResizeListener(this.$refs['echarts-panel'], resizeHandler);
       this.$once('hook:beforeDestroy', () => {
-        removeResizeListener(this.$refs.el, resizeHandler);
-        this.$refs.el = null;
-        this.$data.$echarts = null;
+        removeResizeListener(this.$refs['echarts-panel'], resizeHandler);
       });
     },
     setOption(option) {
@@ -58,22 +67,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .echarts-panel {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  position: relative;
+  .echarts-main {
     width: 100%;
     height: 100%;
-    user-select: none;
-    position: relative;
-    .echarts-main {
-        width: 100%;
-        height: 100%;
-    }
-    .empty {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        margin: 0;
-        z-index: 10;
-        backface-visibility: hidden;
-        transform: translate(-50%, -50%);
-    }
+  }
 }
 </style>
