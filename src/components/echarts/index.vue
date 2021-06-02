@@ -1,5 +1,5 @@
 <template>
-  <div ref="echarts-panel" class="echarts-panel">
+  <div class="echarts-panel">
     <div ref="el" class="echarts-main"></div>
   </div>
 </template>
@@ -47,11 +47,12 @@ export default {
       const resizeHandler = debounce((ev) => {
         this.$data.$echarts.resize();
         this.$emit('resize', ev);
-        console.log(111);
       }, 500);
-      addResizeListener(this.$refs['echarts-panel'], resizeHandler);
+      addResizeListener(this.$refs.el, resizeHandler);
+      window.addEventListener('resize', resizeHandler);
       this.$once('hook:beforeDestroy', () => {
-        removeResizeListener(this.$refs['echarts-panel'], resizeHandler);
+        removeResizeListener(this.$refs.el, resizeHandler);
+        window.removeEventListener('resize', resizeHandler);
       });
     },
     setOption(option) {
