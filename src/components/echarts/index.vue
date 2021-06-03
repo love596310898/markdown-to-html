@@ -10,12 +10,6 @@ import { addResizeListener, removeResizeListener } from '@/utils/resize-event';
 
 export default {
   name: 'ECharts',
-  props: {
-    theme: {
-      type: [Object, String],
-      default: '',
-    },
-  },
   data() {
     return {
       $echarts: null,
@@ -38,30 +32,25 @@ export default {
   methods: {
     initChart() {
       if (!this.$refs.el) return;
-      this.$data.$echarts = echarts.init(this.$refs.el, this.theme);
+      this.el = this.$refs.el;
+      this.$data.$echarts = echarts.init(this.$refs.el);
       this.$data.$eventList.forEach((type) => {
         this.$data.$echarts.on(type, (e) => {
           this.$emit(type, e);
         });
       });
-      const resizeHandler = debounce((ev) => {
+      const resizeHandler = debounce(() => {
         this.$data.$echarts.resize();
-        this.$emit('resize', ev);
-      }, 500);
+      }, 200);
       addResizeListener(this.$refs.el, resizeHandler);
-      window.addEventListener('resize', resizeHandler);
       this.$once('hook:beforeDestroy', () => {
         removeResizeListener(this.$refs.el, resizeHandler);
-        window.removeEventListener('resize', resizeHandler);
       });
     },
     setOption(option) {
       if (!this.$data.$echarts) return;
       this.$data.$echarts.clear();
       this.$data.$echarts.setOption(option, true);
-    },
-    setTheme() {
-      this.initChart();
     },
   },
 };
