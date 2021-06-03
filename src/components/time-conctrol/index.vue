@@ -1,6 +1,6 @@
 <template>
   <div :class="['model-wrap', layoutHandler]">
-    <el-radio-group v-if="rangeOption" v-model="activeRadio" :style="layoutGutterHandler" fill="#0e13cd" @change="radioChange">
+    <el-radio-group v-if="rangeOption" v-model="activeRadio" :style="layoutGutterHandler" @change="radioChange">
       <el-radio-button v-for="range in rangeOption" :key="range.value" :label="range.value">{{ range.label }}</el-radio-button>
     </el-radio-group>
     <el-date-picker
